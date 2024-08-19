@@ -225,6 +225,7 @@ sudo crontab -e
 ```
 ## Versionamento (git local)
 
+`sudo yum install git`
 ```bash
 cd /usr/local/bin
 sudo git init
