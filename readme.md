@@ -158,6 +158,8 @@ sudo vim /etc/exports # arquivo de configuração do NFS
  # diretorio, * ips que podem se conetar, (leitura e escrita, evita falhas de operação a troco de velocidade, restringe o mapeamento de usuario anonimo)
 sudo exportfs -a # exporta a configuração
 sudo exportfs -v # verifica se esta funcionando corretamente
+
+sudo chown $(whoami):$(whoami) /mnt/nfs/juan # libera o usuario atual escrever na pasta | para que o script possa escrever logs
 ```
 
 ## Criando diretório no NFS
@@ -175,7 +177,6 @@ sudo systemctl enable httpd
 
 sudo systemctl status httpd # verifica se esta funcionando corretamente
 
-sudo chown $(whoami):$(whoami) /mnt/nfs/juan # libera o usuario atual escrever na pasta | para que o script possa escrever logs
 ```
 
 ## Criando script de monitoramento
