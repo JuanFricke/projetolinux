@@ -1,10 +1,11 @@
 # Atividade AWS/LINUX desenvolvida para o estágio de DevSecOps na compasso
 
 
-- [Atividade AWS/LINUX desenvolvida para o estágio de DevSecOps na compasso](#atividade-awslinux-desenvolvida-para-o-estágio-de-devsecops-na-compasso)
+- [𝐑𝐞𝐪𝐮𝐢𝐬𝐢𝐭𝐨𝐬 𝐀𝐖𝐒](#requisitos-aws)
   - [Chave de acesso publico](#chave-pública)
   - [vpc, internet gateway e subnet](#vpc)
   - [Instalando NFS e configurando](#instalando-nfs-e-configurando)
+-[𝐑𝐞𝐪𝐮𝐢𝐬𝐢𝐭𝐨𝐬 𝐧𝐨 𝐋𝐢𝐧𝐮𝐱](#requisitos-linux)
   - [Criando diretório no NFS](#criando-diretório-no-nfs)
   - [Instalando e configurando apache](#instalando-e-configurando-apache)
   - [Criando script de monitoramento](#criando-script-de-monitoramento)
@@ -21,7 +22,7 @@
         • Gerar 1 elastic IP e anexar à instância EC2;
         • Liberar as portas de comunicação para acesso público: (22/TCP, 111/TCP e UDP, 2049/TCP/UDP, 80/TCP, 443/TCP).
 
-    𝐑𝐞𝐪𝐮𝐢𝐬𝐢𝐭𝐨𝐬 𝐧𝐨 𝐋𝐢𝐧𝐮𝐱:
+    𝐑𝐞𝐪𝐮𝐢𝐬𝐢𝐭𝐨𝐬 𝐋𝐢𝐧𝐮𝐱:
 
         • Configurar o NFS entregue;
         • Criar um diretório dentro do filesystem do NFS com seu nome;
@@ -34,7 +35,7 @@
         • Fazer a documentação explicando o processo de instalação do Linux.
 
 
- # começo
+ # Requisitos AWS
 
 ## Chave pública;
 
@@ -46,7 +47,6 @@ Operacional Amazon Linux 2 (Família t3.small,
 
 ![alt text](imgs/1.png)
 
-<!-- ![alt text](imgs/2.png) -->
 
 
 Aqui criamos nossa chave segura para acesso SSH na máquina, esta chave deve ser mantida no PC do usuário, e com ela se tem acesso root total da instância EC2
@@ -85,6 +85,9 @@ Dentro da instância podemos então linkar a VPC e a Subnet criada anteriormente
 
 Criamos também um novo grupo de segurança para a máquina, assim podemos customizar exatamente as necessidades dela.
 
+Caso tudo esteja correto, podemos confirmar a criação da instancia!
+
+![alt text](imgs/2.png)
 ![alt text](imgs/11.png)
 
 
@@ -138,7 +141,7 @@ Alteramos também as inbound rules para permitir acesso às portas solicitadas.
 
 Assim acessando o SSH é possível atualizar o sistema e instalar as aplicações.
 
-
+# Requisitos Linux
 ## instalando NFS e configurando
 ```bash
 sudo yum install -y nfs-utils # instala o pacote para gerenciamento de pastas NFS
