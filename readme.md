@@ -71,13 +71,16 @@ Colocando o IP 10.0.0.1/24 conseguimos 256 ips disponíveis no VPC, o que é mai
 
 
 Criamos então a subnet da VPC, com os seguintes parâmetros, a subnet controla as conexões internas e externas das máquinas.
+
 ![alt text](imgs/8.png)
 
 
 Precisamos então criar uma route table, ela que ira controlar rotas de tráfego na rede.
+
 ![alt text](imgs/9.png)
 
 Dentro da instância podemos então linkar a VPC e a Subnet criada anteriormente, assim como ativar o Auto-assign de IP Publico, já que a maquina vai utilizar IP elástico e se conectar com a internet.
+
 ![alt text](imgs/10.png)
 
 Criamos também um novo grupo de segurança para a máquina, assim podemos customizar exatamente as necessidades dela.
@@ -95,9 +98,11 @@ Criamos então um gateway e anexamos ele a VPC que esta sendo usada.
 ![alt text](imgs/17.png)
 
 ![alt text](imgs/18.png)
+
 Agora podemos adicionar um IP elástico na máquina.
 
 Na sessão de IP elástico geramos um novo na mesma localidade que a instância EC2 se encontra, e usando as actions associamos ele a instância criada.
+
 ![alt text](imgs/12.png)
 
 ![alt text](imgs/13.png)
@@ -115,11 +120,13 @@ Ainda, sim, neste caso, continua sendo impossível acessar via console virtual e
 
 
 Colocamos o internet gateway para podermos acessar via SSH
+
 ![alt text](imgs/22.png)
 
 ![alt text](imgs/23.png)
 
 Alteramos também as inbound rules para permitir acesso às portas solicitadas.
+
 ![alt text](imgs/25.png)
 
 
