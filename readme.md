@@ -35,6 +35,7 @@ operacional Amazon Linux 2 (Família t3.small,
 
 
 Aqui criamos nossa chave segura para acesso SSH na maquina, esta chave deve ser mantida no pc do usuario, e com ela se tem acesso root total da instancia EC2
+
 ![alt text](imgs/3.png)
 
 
