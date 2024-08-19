@@ -1,4 +1,17 @@
 # Atividade AWS/LINUX desenvolvida para o estágio de DevSecOps na compasso
+
+
+- [Atividade AWS/LINUX desenvolvida para o estágio de DevSecOps na compasso](#atividade-awslinux-desenvolvida-para-o-estágio-de-devsecops-na-compasso)
+  - [Instalando NFS e configurando](#instalando-nfs-e-configurando)
+  - [Criando diretório no NFS](#criando-diretório-no-nfs)
+  - [Instalando e configurando apache](#instalando-e-configurando-apache)
+  - [Criando script de monitoramento](#criando-script-de-monitoramento)
+  - [Configurar a execução automatizada do script a cada 5 minutos utilizando Cron](#configurar-a-execução-automatizada-do-script-a-cada-5-minutos-utilizando-cron)
+  - [Versionamento (git local)](#versionamento-git-local)
+  - [Criação de html básico para teste do apache](#criação-de-html-básico-para-teste-do-apache)
+  - [Instalação do módulo HTTPS no apache](#instalação-do-módulo-https-no-apache)
+
+
     𝐑𝐞𝐪𝐮𝐢𝐬𝐢𝐭𝐨𝐬 𝐀𝐖𝐒:
 
         • Gerar uma chave pública para acesso ao ambiente;
