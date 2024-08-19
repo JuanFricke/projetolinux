@@ -2,6 +2,8 @@
 
 
 - [Atividade AWS/LINUX desenvolvida para o estágio de DevSecOps na compasso](#atividade-awslinux-desenvolvida-para-o-estágio-de-devsecops-na-compasso)
+  - [Chave de acesso publico](#chave-pública)
+  - [vpc, internet gateway e subnet](#vpc)
   - [Instalando NFS e configurando](#instalando-nfs-e-configurando)
   - [Criando diretório no NFS](#criando-diretório-no-nfs)
   - [Instalando e configurando apache](#instalando-e-configurando-apache)
@@ -34,7 +36,7 @@
 
  # começo
 
-> Gerar uma chave pública para acesso ao ambiente;
+## Chave pública;
 
 A chave de acesso SSH pode ser gerada junto da criação da VM EC2 no próximo passo.
 
@@ -51,7 +53,7 @@ Aqui criamos nossa chave segura para acesso SSH na máquina, esta chave deve ser
 
 ![alt text](imgs/3.png)
 
-
+## VPC
 Após criar a chave SSH conforme figuras acima, deve-se criar então uma VPC para a máquina, para podermos controlar de forma mais segura o fluxo de rede da mesma.
 
 <!-- ![alt text](imgs/4.png) -->
