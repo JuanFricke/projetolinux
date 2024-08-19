@@ -1,13 +1,13 @@
 # Atividade AWS/LINUX desenvolvida para o estágio de DevSecOps na compasso
 
 
-- [𝐑𝐞𝐪𝐮𝐢𝐬𝐢𝐭𝐨𝐬 𝐀𝐖𝐒](#requisitos-aws)
+- [Requisitos AWS](#requisitos-aws)
   - [Chave de acesso publico](#chave-pública)
   - [vpc, internet gateway e subnet](#vpc)
   - [Instalando NFS e configurando](#instalando-nfs-e-configurando)
 -------------------------------------------------
 
-- [𝐑𝐞𝐪𝐮𝐢𝐬𝐢𝐭𝐨𝐬 𝐧𝐨 𝐋𝐢𝐧𝐮𝐱](#requisitos-linux)
+- [Requisitos Linux](#requisitos-linux)
   - [Criando diretório no NFS](#criando-diretório-no-nfs)
   - [Instalando e configurando apache](#instalando-e-configurando-apache)
   - [Criando script de monitoramento](#criando-script-de-monitoramento)
@@ -18,14 +18,14 @@
 
 
 
-   #### Requisitos AWS:
+   **Requisitos AWS:**
 
     - Gerar uma chave pública para acesso ao ambiente;
     - Criar 1 instância EC2 com o sistema operacional Amazon Linux 2 (Família t3.small, 16 GB SSD);
     - Gerar 1 elastic IP e anexar à instância EC2;
     - Liberar as portas de comunicação para acesso público: (22/TCP, 111/TCP e UDP, 2049/TCP/UDP, 80/TCP, 443/TCP).
 
-  #### Requisitos Linux:
+   **Requisitos Linux:**
 
     - Configurar o NFS entregue;
     - Criar um diretório dentro do filesystem do NFS com seu nome;
