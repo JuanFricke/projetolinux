@@ -279,8 +279,34 @@ foreach ($files as $file) {
 
 ```bash
 sudo yum install mod_ssl -y
+
+sudo openssl req -x509 -nodes -days 365 -newkey rsa:2048 -keyout /etc/pki/tls/private/selfsigned.key -out /etc/pki/tls/certs/selfsigned.crt
+
+# openssl: Utiliza a ferramenta OpenSSL para criar e gerenciar chaves e certificados.
+
+# req: Indica que estamos criando uma solicitação de assinatura de certificado (CSR - Certificate Signing Request).
+# -x509: Especifica que queremos criar um certificado autoassinado em vez de uma CSR. O formato x509 é um padrão para certificados SSL.
+# -nodes: Significa "no DES" e indica que a chave privada não deve ser criptografada com uma senha.
+# -days 365: Define a validade do certificado para 365 dias.
+# -newkey rsa:2048: Gera uma nova chave RSA com tamanho de 2048 bits.
+# -keyout /etc/pki/tls/private/selfsigned.key: Especifica o caminho onde a chave privada gerada será salva.
+# -out /etc/pki/tls/certs/selfsigned.crt: Especifica o caminho onde o certificado autoassinado será salvo.
+
 ```
+
+
+
+
 ![alt text](imgs/output.gif)
+
+
+`sudo vim /etc/httpd/conf.d/ssl.conf` 
+
+Altere as seguintes linhas:
+```
+SSLCertificateFile /etc/pki/tls/certs/selfsigned.crt
+SSLCertificateKeyFile /etc/pki/tls/private/selfsigned.key
+```
 
 ![alt text](imgs/fakehttps.png)
 
