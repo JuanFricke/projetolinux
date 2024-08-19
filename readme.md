@@ -1,4 +1,4 @@
-# Atividade AWS/LINUX desenvolvida para o estagio de DevSecOps na compasso
+# Atividade AWS/LINUX desenvolvida para o estágio de DevSecOps na compasso
     𝐑𝐞𝐪𝐮𝐢𝐬𝐢𝐭𝐨𝐬 𝐀𝐖𝐒:
 
         • Gerar uma chave pública para acesso ao ambiente;
@@ -11,9 +11,9 @@
         • Configurar o NFS entregue;
         • Criar um diretório dentro do filesystem do NFS com seu nome;
         • Subir um apache no servidor - o apache deve estar online e rodando;
-        • Criar um script que valide se o serviço esta online e envie o resultado da validação para o seu diretorio no nfs;
+        • Criar um script que valide se o serviço esta online e envie o resultado da validação para o seu diretório no NFS;
         • O script deve conter - Data HORA + nome do serviço + Status + mensagem personalizada de ONLINE ou offline;
-        • O script deve gerar 2 arquivos de saida: 1 para o serviço online e 1 para o serviço OFFLINE;
+        • O script deve gerar 2 arquivos de saída: 1 para o serviço online e 1 para o serviço OFFLINE;
         • Preparar a execução automatizada do script a cada 5 minutos.
         • Fazer o versionamento da atividade;
         • Fazer a documentação explicando o processo de instalação do Linux.
@@ -23,10 +23,10 @@
 
 > Gerar uma chave pública para acesso ao ambiente;
 
-A chave de acesso SSH pode ser gerada junto da criação da VM EC2 no proximo passo.
+A chave de acesso SSH pode ser gerada junto da criação da VM EC2 no próximo passo.
 
 > Criar 1 instância EC2 com o sistema
-operacional Amazon Linux 2 (Família t3.small,
+Operacional Amazon Linux 2 (Família t3.small,
 16 GB SSD);
 
 ![alt text](imgs/1.png)
@@ -34,12 +34,12 @@ operacional Amazon Linux 2 (Família t3.small,
 <!-- ![alt text](imgs/2.png) -->
 
 
-Aqui criamos nossa chave segura para acesso SSH na maquina, esta chave deve ser mantida no pc do usuario, e com ela se tem acesso root total da instancia EC2
+Aqui criamos nossa chave segura para acesso SSH na máquina, esta chave deve ser mantida no PC do usuário, e com ela se tem acesso root total da instância EC2
 
 ![alt text](imgs/3.png)
 
 
-Após criar a chave SSH conforme figuras acima, deve-se criar então uma VPC para a maquina, para podermos controlar de forma mais segura o fluxo de rede da mesma.
+Após criar a chave SSH conforme figuras acima, deve-se criar então uma VPC para a máquina, para podermos controlar de forma mais segura o fluxo de rede da mesma.
 
 <!-- ![alt text](imgs/4.png) -->
 
@@ -48,30 +48,30 @@ Após criar a chave SSH conforme figuras acima, deve-se criar então uma VPC par
 ![alt text](imgs/6.png)
 
 
-Um passo muito importante é a definição do IPv4 CIDR, que corresponde aos ips internos das maquinas da rede.
+Um passo muito importante é a definição do IPv4 CIDR, que corresponde aos ips internos das máquinas da rede.
 
-Colocando o ip 10.0.0.1/24 conseguimos 256 ips disponiveis no VPC, o que é mais que suficiente na nossa ocasião.
+Colocando o IP 10.0.0.1/24 conseguimos 256 ips disponíveis no VPC, o que é mais que suficiente na nossa ocasião.
 
 ![alt text](imgs/7.png)
 
 
-Criamos então a subnet da VPC, com os seguintes parametros, a subnet controla as conexões internas e externas das maquinas.
+Criamos então a subnet da VPC, com os seguintes parâmetros, a subnet controla as conexões internas e externas das máquinas.
 ![alt text](imgs/8.png)
 
 
-Precisamos então criar uma route table, ela que ira controlar rotas de trafego na rede.
+Precisamos então criar uma route table, ela que ira controlar rotas de tráfego na rede.
 ![alt text](imgs/9.png)
 
-Dentro da nossa instancia podemos então linkar a VPC e a Subnet criada anteriormente, assim como ativar o Auto-assign de ip Publico, já que a maquina vai utilizar ip elastico e se conectar com a internet.
+Dentro da instância podemos então linkar a VPC e a Subnet criada anteriormente, assim como ativar o Auto-assign de IP Publico, já que a maquina vai utilizar IP elástico e se conectar com a internet.
 ![alt text](imgs/10.png)
 
-Criamos também um novo grupo de segurança para a maquina, assim podemos customizar exatamente as necessidades dela.
+Criamos também um novo grupo de segurança para a máquina, assim podemos customizar exatamente as necessidades dela.
 
 ![alt text](imgs/11.png)
 
 
 
-Antes de asossiarmos nosso ip elastico a instancia EC2, precisamos criar um internet gateway, para q a maquina tenha acesso a rede externa
+Antes de associarmos nosso IP elástico a instância EC2, precisamos criar um internet gateway, para que a maquina tenha acesso à rede externa
 
 ![alt text](imgs/16.png)
 
@@ -80,9 +80,9 @@ Criamos então um gateway e anexamos ele a VPC que esta sendo usada.
 ![alt text](imgs/17.png)
 
 ![alt text](imgs/18.png)
-Agora podemos adicionar um IP elastico na maquina.
+Agora podemos adicionar um IP elástico na máquina.
 
-Na sessão de IP elastico geramos um novo na mesma localidade que nossa instancia EC2 se encontra, e usando as actions assossiamos ele a instancia criada.
+Na sessão de IP elástico geramos um novo na mesma localidade que a instância EC2 se encontra, e usando as actions associamos ele a instância criada.
 ![alt text](imgs/12.png)
 
 ![alt text](imgs/13.png)
@@ -94,17 +94,17 @@ Na sessão de IP elastico geramos um novo na mesma localidade que nossa instanci
 
 ![alt text](imgs/20.png)
 
-Ainda sim, neste caso, continua sendo impossivel acessar via console virtual e SSH, precisamos configurar o grupo de segurança corretamente agora.
+Ainda, sim, neste caso, continua sendo impossível acessar via console virtual e SSH, precisamos configurar o grupo de segurança corretamente agora.
 
 ![alt text](imgs/21.png)
 
 
-Colocamos o internet gateway para que possamos acessar via SSH
+Colocamos o internet gateway para podermos acessar via SSH
 ![alt text](imgs/22.png)
 
 ![alt text](imgs/23.png)
 
-Alteramos também as inbount rules para permitir acesso as portas solicitadas.
+Alteramos também as inbound rules para permitir acesso às portas solicitadas.
 ![alt text](imgs/25.png)
 
 
@@ -114,7 +114,7 @@ Alteramos também as inbount rules para permitir acesso as portas solicitadas.
 ![alt text](imgs/26.png)
 
 
-Assim acessando o SSH é possivel atualizar o sistema e instalar as aplicações.
+Assim acessando o SSH é possível atualizar o sistema e instalar as aplicações.
 
 
 ## instalando NFS e configurando
@@ -133,7 +133,7 @@ sudo exportfs -a # exporta a configuração
 sudo exportfs -v # verifica se esta funcionando corretamente
 ```
 
-## Criando diretorio no NFS
+## Criando diretório no NFS
 
 ```bash
 sudo mkdir -p /mnt/nfs/juan # no meu caso
@@ -202,7 +202,7 @@ sudo git add check_apache.sh
 sudo git commit -m "Adicionado script de monitoramento do Apache"
 ```
 
-## Criação de html basico para teste do apache
+## Criação de html básico para teste do apache
 
 ```bash
 cd /var/www/htm
@@ -237,7 +237,7 @@ sudo vim
 </html>
 ```
 
-Criei também um arquivo php para fazer o print de logs, o arquivo se encontra dentro da pasta NFS:
+Criei também um arquivo PHP para fazer o print de logs, o arquivo se encontra dentro da pasta NFS:
 
 ```php
 <?php
@@ -261,7 +261,7 @@ foreach ($files as $file) {
 }
 ?>
 ```
-## Instalação do modulo HTTPS no apache
+## Instalação do módulo HTTPS no apache
 
 ```bash
 sudo yum install mod_ssl -y
