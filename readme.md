@@ -5,8 +5,9 @@
   - [Chave de acesso publico](#chave-pública)
   - [vpc, internet gateway e subnet](#vpc)
   - [Instalando NFS e configurando](#instalando-nfs-e-configurando)
+-------------------------------------------------
 
--[𝐑𝐞𝐪𝐮𝐢𝐬𝐢𝐭𝐨𝐬 𝐧𝐨 𝐋𝐢𝐧𝐮𝐱](#requisitos-linux)
+- [𝐑𝐞𝐪𝐮𝐢𝐬𝐢𝐭𝐨𝐬 𝐧𝐨 𝐋𝐢𝐧𝐮𝐱](#requisitos-linux)
   - [Criando diretório no NFS](#criando-diretório-no-nfs)
   - [Instalando e configurando apache](#instalando-e-configurando-apache)
   - [Criando script de monitoramento](#criando-script-de-monitoramento)
