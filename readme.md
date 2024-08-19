@@ -169,6 +169,11 @@ sudo systemctl status httpd # verifica se esta funcionando corretamente
 sudo vim /usr/local/bin/check_apache.sh 
 ```
 ```bash
+[ec2-user@ip-10-0-0-216 bin]$ pwd
+/usr/local/bin
+[ec2-user@ip-10-0-0-216 bin]$ ls
+check_apache.sh
+[ec2-user@ip-10-0-0-216 bin]$ cat check_apache.sh 
 #!/bin/bash
 
 # Configurações
@@ -201,6 +206,85 @@ sudo crontab -e
 # documento aberto no vim:
 */5 * * * * /usr/local/bin/check_apache.sh
 # :wq para salvar
-
-
 ```
+## Versionamento (git local)
+
+```bash
+cd /usr/local/bin
+sudo git init
+sudo git add check_apache.sh
+sudo git commit -m "Adicionado script de monitoramento do Apache"
+```
+
+## Criação de html basico para teste do apache
+
+```bash
+cd /var/www/htm
+sudo vim
+```
+```html
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Welcome</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.4/css/bulma.min.css">
+</head>
+<body>
+    <section class="hero is-primary is-fullheight">
+        <div class="hero-body">
+            <div class="container has-text-centered">
+                <h1 class="title">
+                    Bem-vindo!
+                </h1>
+                <h2 class="subtitle">
+                    Este é o meu teste Apache, o botão abaixo contem os logs do script de verificação de atividade do server.
+                </h2>
+                <a href="nfs/view_logs.php" class="button is-link is-large">
+                    Ver Logs
+                </a>
+            </div>
+        </div>
+    </section>
+</body>
+</html>
+```
+
+Criei também um arquivo php para fazer o print de logs, o arquivo se encontra dentro da pasta NFS:
+
+```php
+<?php
+$directory = '/mnt/nfs/juan';
+$files = array_diff(scandir($directory), array('..', '.'));
+
+echo "<h1>Conteúdo dos Arquivos em $directory</h1>";
+
+foreach ($files as $file) {
+    // Verifica se o arquivo é um dos desejados
+    if ($file === 'apache_offline.log' || $file === 'apache_online.log') {
+        $filePath = $directory . '/' . $file;
+
+        if (is_file($filePath)) {
+            echo "<h2>$file</h2>";
+            echo "<pre>";
+            echo htmlspecialchars(file_get_contents($filePath), ENT_QUOTES, 'UTF-8');
+            echo "</pre>";
+        }
+    }
+}
+?>
+```
+## Instalação do modulo HTTPS no apache
+
+```bash
+sudo yum install mod_ssl -y
+```
+![alt text](imgs/output.gif)
+
+![alt text](imgs/fakehttps.png)
+
+Agora podemos acessar o site(mesmo que de forma não tão segura) utilizando https
+
+![alt text](<imgs/main page.png>)
+![alt text](imgs/view_logs.png)
