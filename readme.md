@@ -174,6 +174,8 @@ sudo systemctl start httpd
 sudo systemctl enable httpd
 
 sudo systemctl status httpd # verifica se esta funcionando corretamente
+
+sudo chown $(whoami):$(whoami) /mnt/nfs/juan # libera o usuario atual escrever na pasta | para que o script possa escrever logs
 ```
 
 ## Criando script de monitoramento
